@@ -10,6 +10,9 @@
     <body>
         <div id="app">
             <p> Value = {{count}}</p>
+            <p>Name : {{id_user.name}}</p>
+            <p>Occupation : {{id_user.occupation}}</p>
+            <p>Age : {{id_user.age}}</p>
             {{changeValue()}}
         </div>
     </body>
@@ -19,12 +22,25 @@
             setup(){
                 let count =ref(0);// this value have to be reactive ref
 
+                let id_user=reactive({//we dont have to use .value when we change it
+                    name:'Stella',
+                    occupation:'Dev',
+                    age:24
+                });
 
                 function changeValue(){
-                    count.value=1;
+                    setTimeout(()=>{
+
+                        count.value=1;
+                        id_user.name='Maria';
+                        id_user.occupation='Front-end';
+                        id_user.age=25;
+
+                    },3000)
+                    
                 }
 
-                return {changeValue, count};
+                return {changeValue, count,id_user};
             }
         }).mount('#app')
     </script>
