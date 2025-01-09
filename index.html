@@ -10,20 +10,31 @@
 
             
             <p>{{grettings}}</p>
+            <p>Is it true: {{isTrue ? 'Yes':'No'}}</p>
+            <p>What is your name? {{array[0]}}</p>
+            <p>What is your favourite animal? {{obj.animal}}</p>
         </div>
 
     </body>
     <script>
         const {createApp}= Vue;
         createApp({
-            setup(){
+            setup(){//this is javascript
                 const d = new Date();
                 let year = d.getFullYear();
 
-                const grettings ='Hello world!!! Its '+ year;
+                const grettings ='Hello world!!! It s '+ year;
+                const isTrue=true;
+
+                const array =['Stella','Maria'];
+
+                const obj={animal:'cat'}
 
                 return{
-                    grettings
+                    grettings,
+                    isTrue,
+                    array,
+                    obj
                 }
 
             }
