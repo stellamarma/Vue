@@ -9,8 +9,10 @@
     </head>
     <body>
         <div id="app">
-            <img v-bind:src="image.src" v-bind:alt="image.alt" />
+            <h2>This is your quotes for today!</h2>
+            <img v-bind:src="image.src" v-bind:alt="image.alt"  width="400" height="400" />
             {{changeValue()}}
+            <p><a v-bind:href="link">Go to youtube</a></p>
         </div>
     </body>
     <script>
@@ -21,7 +23,8 @@
                     src:'https://i.pinimg.com/736x/ad/0f/1d/ad0f1d44706cd49b0e34253b8f916e6f.jpg',
                     alt:'quote'
                 });
-
+                const link ="https://www.youtube.com/watch?v=bBQA7yy7EBU"
+                
                 function changeValue(){
                     setTimeout(()=>{
 
@@ -32,7 +35,7 @@
                     },3000)
                     
                 }
-                return {image,changeValue};
+                return {image,changeValue,link};
             }
         }).mount('#app')
     </script>
