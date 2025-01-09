@@ -1,45 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <title>Page Title</title>
-    </head>
-    <body>
+<head>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Page Title</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ welcome() }}</p>
+        <p>{{ message() }}</p>
+    </div>
+</body>
+<script>
+    const { createApp } = Vue;
 
-        <div id="app">
-
-            
-            <p>{{grettings}}</p>
-            <p>Is it true: {{isTrue ? 'Yes':'No'}}</p>
-            <p>What is your name? {{array[0]}}</p>
-            <p>What is your favourite animal? {{obj.animal}}</p>
-        </div>
-
-    </body>
-    <script>
-        const {createApp}= Vue;
-        createApp({
-            setup(){//this is javascript
-                const d = new Date();
-                let year = d.getFullYear();
-
-                const grettings ='Hello world!!! It s '+ year;
-                const isTrue=true;
-
-                const array =['Stella','Maria'];
-
-                const obj={animal:'cat'}
-
-                return{
-                    grettings,
-                    isTrue,
-                    array,
-                    obj
-                }
-
+    createApp({
+        setup() {
+            const message = () => 'Message from setup function'; // Ορισμός συνάρτησης στο setup.
+            return {
+                message // Επιστροφή για χρήση στο template.
+            };
+        },
+        methods: {
+            welcome() {
+                return 'Hello guys'; // Ορισμός μεθόδου στο methods.
             }
-
-
-        }).mount('#app');//its the same name as the id's name on line 9
-    </script>
+        }
+    }).mount('#app');
+</script>
 </html>
