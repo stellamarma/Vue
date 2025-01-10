@@ -17,7 +17,7 @@
     <body>
         <div id="app">
             <h1 >{{name}}</h1>
-            <div v-on:click="update">
+            <div v-on:click="update('Takis',$event)">
                 Click me !!
             </div>
             <hr/>
@@ -26,7 +26,12 @@
             </div>
             <p>x:{{coord.x}}</p>
             <p>y:{{coord.y}}</p>
-        </div>
+        <hr/>
+        <form v-on:submit.prevent="handleForm">
+            <input/>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
     </body>
     <script>
         const { createApp, ref } = Vue;
@@ -35,15 +40,23 @@
                 //events with v-on : type
                 const name = ref('Stella');
                 const coord =ref({x:0,y:0})
-                function update(){
-                    name.value='Steve';
+                function update(newName,event){
+
+                    console.log(event);
+                    name.value=newName;
 
                 }
+                //when i use this v-on:mousemove i will get the event 
                 function getCoord(event){
                     coord.value.x= event.clientX;
                     coord.value.y= event.clientY;
                 }
-                return {name,update,coord, getCoord}
+
+                function handleForm(event){
+                    //event.preventDefault();// because we dont want to reload the page when we click submit
+                    console.log('form Submitted');
+                }
+                return {name,update,coord, getCoord,handleForm}
             }
         }).mount('#app')
     </script>
