@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <title>Project one</title>
+    </head>
+    <body>
+        <div id="app">
+            <h2 v-text="text">{{text}}</h2>
+        <ul>
+            <li v-for="(name,index) in names">
+                {{name}} : {{++ index }}
+            </li>
+        </ul>
+        <hr/>
+        <h2 v-text="text2">{{text2}}</h2>
+        <ul>
+            <li v-for="cat in cats">
+              <p>Cat's name is   {{cat.name}} . The age  {{cat.age}} . Cat's color is {{cat.color}} </p>
+        </li>
+        </ul>
+        <hr/>
+        <ul>
+            <li v-for="(key , value, index) in user">
+                {{index}} - {{key}} - {{value}} 
+            </li>
+        </ul>
+        </div>
+    </body>
+    <script>
+        const { createApp, ref } = Vue;
+        createApp({
+            setup(){
+                const names = ref(['Stella','Dimitra', 'Nikola']);
+                
+                const text ='The names of the array are: ';
+
+                const text2 ='The cats collection: ';
+
+                const cats = ref([//this is a collection. An array full of obj
+                    {name:'Nala', age:6 ,color:'white'},
+                    {name:'Giger', age:8 ,color:'orange'},
+                    {name:'Mayros', age:6 ,color:'black'},
+                ])
+
+                const user={//loop each value per
+                    name:'Stella',
+                    age:'24',
+                    favouriteFood:'noodles'
+                }
+
+                return {names,text,cats,text2,user};
+            }
+        }).mount('#app')
+    </script>
+</html>
