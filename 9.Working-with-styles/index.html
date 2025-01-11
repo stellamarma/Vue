@@ -22,8 +22,19 @@
             <div v-on:click="colors.red = !colors.red">
                 Activate red
             </div>
-           
-        
+            <hr/>
+            <div 
+            v-bind:class="[changeColors.redClass.actives ? changeColors.redClass.name: '',changeColors.blueClass.actives ? changeColors.blueClass.name: '']"
+            > This is my element
+        </div>
+        <div  v-on:click="changeColors.redClass.actives = !changeColors.redClass.actives">
+            Activate red
+        </div>
+        <hr/>
+        <p v-bind:style="changeColors.newStyle">The end</p>
+        <div  v-on:click="changeColors.newStyle.fontSize='150px'">
+            Activate red
+        </div>
         </div>
     </body>
     <script>
@@ -31,11 +42,29 @@
         createApp({
             setup(){
                const redColor=ref(false);//without ref is not gonna change
-               const colors=ref({
+               const colors=ref({// this is boolean 
                     blue:true,
                     red:false
                });
-               return {redColor,colors}
+               //2nd way
+               const changeColors=ref({
+                    blueClass:{
+                        name:'blue',
+                        actives:true
+                    },
+                    redClass:{
+                        name:'red',
+                        actives:false
+                    },              
+                    newStyle:{ //for inline styling
+                    fontSize:'50px',
+                    border:'5px solid green'
+               }
+               });
+              
+
+
+               return {redColor,colors,changeColors, }
             }
         }).mount('#app')
     </script>
@@ -57,5 +86,6 @@
         .large {
             font-size: 40px;
         }
+        
     </style>
 </html>
