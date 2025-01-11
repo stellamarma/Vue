@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <title>Project one</title>
+        
+    </head>
+    <body>
+        <div id="app">
+            <div 
+                class="element" 
+                v-bind:class="{red:redColor}"
+                v-on:click="redColor = !redColor"
+                > This is my element
+            </div>
+        </div>
+    </body>
+    <script>
+        const { createApp, ref } = Vue;
+        createApp({
+            setup(){
+               const redColor=ref(false);
+
+               return {redColor}
+            }
+        }).mount('#app')
+    </script>
+    <style>
+        .element {
+            color:white;
+            background:black;
+            padding:10px
+        }
+        .blue {
+            background:blue
+        }
+        .green {
+            background: green;
+        }
+        .red {
+            background: red;
+        }
+        .large {
+            font-size: 40px;
+        }
+    </style>
+</html>
