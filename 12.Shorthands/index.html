@@ -10,7 +10,7 @@
     </head>
     <body>
         <div id="app">
-           <a :href="google">Go to google</a><!-- its like v-bind -->
+           <a :href="google">Go to pinterest</a><!-- its like v-bind -->
            <hr/>
            <button @:click="alertSomething">Alert something</button><!-- its like v-on -->
         </div>
@@ -19,7 +19,7 @@
         const { createApp, ref } = Vue;
         createApp({
             setup(){
-                const google = ref('http://google.com');
+                const google = ref('https://gr.pinterest.com/');
                 const alertSomething = () => {
                     alert('Hello !!');
                 }
