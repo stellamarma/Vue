@@ -12,19 +12,30 @@
         <div id="app">
             <div 
                 class="element" 
-                v-bind:class="{red:redColor}"
+                v-bind:class="{red:redColor, large:true}"
                 v-on:click="redColor = !redColor"
                 > This is my element
             </div>
+            <hr/>
+            <div  class="element" v-bind:class="colors"> This is my element </div>
+
+            <div v-on:click="colors.red = !colors.red">
+                Activate red
+            </div>
+           
+        
         </div>
     </body>
     <script>
         const { createApp, ref } = Vue;
         createApp({
             setup(){
-               const redColor=ref(false);
-
-               return {redColor}
+               const redColor=ref(false);//without ref is not gonna change
+               const colors=ref({
+                    blue:true,
+                    red:false
+               });
+               return {redColor,colors}
             }
         }).mount('#app')
     </script>
