@@ -27,10 +27,6 @@
                 <input type="text" v-model.trim="data.inputMovie"/>
                 <button @click= "addMovieToList" >Add</button>
             </div>
-        
-        <div id="results" class="container" v-if="!data.state">
-            The result is: 
-        </div>
 
         <div class="list_of_names">
             <div v-for="(name,index) in data.names"
@@ -46,6 +42,14 @@
             </div>
         </div>
     </div>
+        <div id="results" class="container" v-if="!data.state">
+            <div class="result_container">
+                <h1>The winner is: </h1>
+                <div class="result_value">
+                    {{data.result}}
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="js/app.js"></script>

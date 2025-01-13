@@ -35,11 +35,20 @@ createApp({
         const isReady= computed(()=>{
             return data.names.length>1;
         })
-
+        const getRandomName=()=>{
+            return data.names[Math.floor(Math.random()*data.names.length)];
+        }
+        const genearteResult=()=>{
+            let rand = getRandomName();
+            data.result=rand;
+        }
         const showResults=(()=>{
+            genearteResult()
             data.state=false;
             return data.state;
         })
+
+
         
     return{
         data,
