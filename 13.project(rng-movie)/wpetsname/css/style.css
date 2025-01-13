@@ -21,13 +21,18 @@ body {
   
   .logo h1 {
     font-family: "Pacifico", cursive;
-    color: rgba(47, 47, 176, 0.952);
+    color: rgb(55, 66, 250);
     text-decoration: underline;
-    text-decoration-color: #607d8b;
+    text-decoration-color: rgb(116, 125, 140);
     font-size: 40px;
     text-align: center;
   }
-  
+  .logo h2 {
+    font-family: "Pacifico", cursive;
+    color: rgb(83, 82, 237);
+    font-size: 30px;
+    text-align: center;
+}
   .input_container {
     display: flex;
   }
@@ -114,16 +119,20 @@ body {
   
   .result_value {
     font-size: 40px;
-    color: #41b6e6;
+    color: rgb(83, 82, 237);
     font-weight: 600;
     text-align: center;
     margin-bottom: 20px;
   }
   
   .result_container h1 {
-    font-family: "Pacifico", cursive;
-    color: #3c2992;
-    text-decoration: underline;
-    text-decoration-color: #607d8b;
+
+      font-family: "Pacifico", cursive;
+      color: rgb(55, 66, 250);
+      text-decoration: underline;
+      text-decoration-color: rgb(116, 125, 140);
+      font-size: 40px;
+      text-align: center;
+    
   }
   
