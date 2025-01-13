@@ -31,12 +31,22 @@ createApp({
             data.names.splice(index,1);
 
         }
+        //computed
+        const isReady= computed(()=>{
+            return data.names.length>1;
+        })
+
+        const showResults=(()=>{
+            data.state=false;
+            return data.state;
+        })
         
     return{
         data,
         addMovieToList,
         removeMovie,
-
+        isReady,
+        showResults
     }
     }
 }).mount('#app')

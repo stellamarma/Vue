@@ -40,6 +40,11 @@
                 {{name}}
              </div>
         </div>
+        <div v-if="isReady" class="animate__animated animate__bcounceIn">
+            <div class="action_button" @click="showResults">
+                Check the winner
+            </div>
+        </div>
     </div>
     </div>
 </body>
