@@ -47,7 +47,20 @@ createApp({
             data.state=false;
             return data.state;
         })
+        const restApp= ()=>{
+            data.state=true;
+            data.inputMovie='';
+            data.names=[];
+            data.error='';
+            data.showError=false;
+            data.result='';
 
+        }
+
+        const getNewResult=()=>{
+
+            return genearteResult();
+        }
 
         
     return{
@@ -55,7 +68,9 @@ createApp({
         addMovieToList,
         removeMovie,
         isReady,
-        showResults
+        showResults,
+        restApp,
+        getNewResult
     }
     }
 }).mount('#app')
