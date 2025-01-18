@@ -1,5 +1,7 @@
 <template>
+ <app-header></app-header>
  <h1>{{name}}</h1>
+ <app-footer></app-footer>
 </template>
 
 <script setup>
