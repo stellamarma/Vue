@@ -2,15 +2,16 @@
  <h1>{{name}}</h1>
 </template>
 
-<script >
-  export default {
-    setup(){
-      const name="Hello world"
-      return { name }
-    }
-  }
+<script setup>
+  import {ref} from 'vue';
+
+  const name=ref("Hello world");
+ 
+
 </script>
 
 <style >
-
+    h1{
+      color:blue;
+    }
 </style>
