@@ -2,12 +2,12 @@
 
   <div>
     <app-header></app-header>
-    <div>
+    <div class="container">
       <h1>{{name}}</h1>
     </div>
     <app-footer></app-footer>
   </div>
-  
+
 </template>
 
 <script setup>
@@ -20,8 +20,15 @@
 
 </script>
 
-<style >
-    h1{
-      color:blue;
-    }
+<style scoped>
+  body {
+    padding:0;
+    margin:0;
+    font-family:'Courier New', 
+  }
+  .container{
+    min-height:auto;
+    box-sizing: border-box;
+    padding:50px;
+  }
 </style>
