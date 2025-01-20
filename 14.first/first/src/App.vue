@@ -3,7 +3,12 @@
   <div>
     <app-header></app-header>
     <div class="container">
-      <h1>{{name}}</h1>
+      <h1>{{greed}}</h1>
+      <UserProfile 
+      :name="data.name"
+      :lastname="data.lastname"
+      />
+      <button @click="updateName">Update name</button>
     </div>
     <app-footer></app-footer>
   </div>
@@ -15,8 +20,18 @@
   //the second way 
   // import Footer from './components/header_footer/Footer.vue'
   //and use <Footer/> to the template
-  const name=ref("Hello world");
- 
+  import UserProfile from './components/header_footer/User/Prifile.vue';
+  import {reactive} from 'vue';
+
+  const data=reactive ({
+    name:'Francis',
+    lastname:'tata'
+  })
+  const greed=ref("Hello world");
+  
+  const updateName=()=>{
+    data.name='Your name is Madame'
+  }
 
 </script>
 
