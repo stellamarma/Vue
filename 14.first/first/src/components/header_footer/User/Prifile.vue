@@ -11,17 +11,23 @@
             <ul>
                 <li v-for="(value,key,index) in userParents" :key="index"><span>{{ key }} :</span> {{ value }}</li>
             </ul>
-    
+        <hr/>
+        <button @click="updateLastname">Change from child</button>
     </div>
 </template>
 <script setup>
+//props are read only
+
+    const emit = defineEmits(['update-lastname']);
     const props = defineProps({
         name:String,
         userlastname:String,
         userAge:Number,
         userParents:Object
     });//The names must be unique
-  
+    const updateLastname=()=>{
+        emit('update-lastname','madame');
+    }
 </script>
 <style scoped>
     span{
