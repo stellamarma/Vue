@@ -6,7 +6,9 @@
       <h1>{{greed}}</h1>
       <UserProfile 
       :name="data.name"
-      :lastname="data.lastname"
+      :userlastname="data.lastname"
+      :userAge="data.age"
+      :userParents="data.parents"
       />
       <button @click="updateName">Update name</button>
     </div>
@@ -25,10 +27,15 @@
 
   const data=reactive ({
     name:'Francis',
-    lastname:'tata'
+    lastname:'tata',
+    age:28,
+    parents:{
+      mother:'Caty',
+      father:'Mario'
+    }
   })
   const greed=ref("Hello world");
-  
+
   const updateName=()=>{
     data.name='Your name is Madame'
   }
