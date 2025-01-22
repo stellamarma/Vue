@@ -14,6 +14,7 @@
         <hr/>
         <button @click="emit('update-lastname','madame')">Change from child</button>
         <button @click="sayHello">Say hello</button>
+        <button @click="updateAge(90)">update the age</button>
     </div>
 </template>
 <script setup>
@@ -24,7 +25,8 @@
         name:String,
         userlastname:String,
         userAge:Number,
-        userParents:Object
+        userParents:Object,
+        updateAge:Function
     });//The names must be unique
     const sayHello=()=>{
     emit('say-hello') 
