@@ -22,9 +22,22 @@
 
     const emit = defineEmits(['update-lastname','say-hello']);
     const props = defineProps({
-        name:String,
-        userlastname:String,
-        userAge:Number,
+        name:{
+            type:String,
+            required:true,
+            default:'N/A'
+        },
+        userlastname:{
+            type:String,
+            validator(value){
+                if(value=== 'maria'){
+                    return true
+                }else{
+                    return false;
+                }
+            }
+        },
+        userAge:[Number,String],
         userParents:Object,
         updateAge:Function
     });//The names must be unique
