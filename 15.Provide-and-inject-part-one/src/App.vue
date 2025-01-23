@@ -19,7 +19,7 @@
                         You should have at least one cat at your home 
                     </div>
                 </template>
-                <slot><strong>Default slot</strong></slot>
+                <strong>Default slot</strong>
             </CarBrands>
         </div>
     </div>
