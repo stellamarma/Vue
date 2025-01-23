@@ -7,11 +7,19 @@
             <button @click="updateCar">Update from parent</button>
             <hr/>
             <CarBrands>
-                <ul>
-                <li>Mazda</li>
-                <li>Honda</li>
-                <li>lopezz</li>
-                </ul>
+                <template v-slot:brands>
+                    <ul>
+                        <li v-for="(brand,index) in brands" :key="index">
+                            {{ brand }}
+                        </li>
+                     </ul>
+                </template>
+                <template v-slot:cats>
+                    <div>
+                        You should have at least one cat at your home 
+                    </div>
+                </template>
+                <slot><strong>Default slot</strong></slot>
             </CarBrands>
         </div>
     </div>
@@ -33,11 +41,11 @@
         cars[0].model='shakira'
 
     }
-
+    const brands = reactive (['Mazda','Honda','lopezz'])
     provide('cars',{cars,updateCar})
 </script>
 
-<style>
+<style scoped>
     body {
         padding: 0;
         margin: 0;
@@ -47,6 +55,9 @@
         min-height:84vh;
         box-sizing: border-box;
         padding: 20px;
+    }
+    li{
+        color:red;
     }
 
 </style>
