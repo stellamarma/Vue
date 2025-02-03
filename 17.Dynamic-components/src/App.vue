@@ -4,8 +4,9 @@
         <div class="container">
             <button @click="activeComp = Mike">Mike</button>
             <button @click="activeComp = Steve">Steve</button>
-            <Mike v-if="activeComp === Mike" />
-            <Steve v-if="activeComp === Steve" />
+            <!-- <Mike v-if="activeComp === Mike" />
+            <Steve v-if="activeComp === Steve" /> -->
+            <component :is="activeComp"></component>
         </div>
     </div>
 </template>
