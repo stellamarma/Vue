@@ -37,7 +37,7 @@ app.directive('awesome',{
         console.log('update');
         console.log(el.parentNode);
     },beforeUnmount(){},
-    unmounted(){}
+      unmounted(){}
 })
 
 app.component('app-header',Header)
