@@ -50,16 +50,20 @@
           <div class="mb-3">
               <h5>Want more spam ? </h5>
               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Newsletter" id="newsletter"
+                  <input class="form-check-input" type="checkbox" 
+                  value="Newsletter" id="newsletter"
+                  v-model="formData.extras"
                   >
                   <label class="form-check-label" for="newsletter">
                       Newsletter
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Promotions" id="promotions"
+                  <input class="form-check-input" 
+                  type="checkbox" value="Promotions" id="promotions"
+                  v-model="formData.extras"
                   >
-                  <label class="form-check-label" for="newsletter">
+                  <label class="form-check-label" for="promotions">
                       Promotions
                   </label>
               </div>
@@ -104,7 +108,8 @@
     name:'',
     email:'',
     subject:'',
-    message:''
+    message:'',
+    extras:[]
   });
 
   const submitForm = () => {
