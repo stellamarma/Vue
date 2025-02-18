@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form  @submit="checkForm">
       <div class="row">
         <div class="col-xl-12">
           <h1>Contact us</h1>
@@ -72,14 +72,20 @@
            <div class="mb-3">
               <h5>What are you ? </h5>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" id="human" value="human" name="origin"
+                  <input class="form-check-input" 
+                  type="radio" id="human" 
+                  value="human" name="origin"
+                  v-model="formData.gender"
                   >
                   <label class="form-check-label" for="human">
                       Human
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" id="alien" value="alien" name="origin"
+                  <input class="form-check-input" 
+                  type="radio" id="alien" 
+                  value="alien" name="origin"
+                  v-model="formData.gender"
                   >
                   <label class="form-check-label" for="alien">
                       Alien
@@ -89,11 +95,18 @@
             
             <button
                 class="btn btn-primary"
-                @click.prevent="submitForm"
             >
             Submit
             </button>
-  
+            <hr/>
+            <div v-if="errors.length">
+              <b>ooops, fix these errors</b>
+              <ul>
+                <li v-for="error in errors " :key="error">
+                  {{error}}
+                </li>
+              </ul>
+            </div>
          
         </div>
       </div>
@@ -103,14 +116,31 @@
 
 <script setup>
   import { reactive } from "vue";
+  const errors=reactive([]);
 
   const formData = reactive({
     name:'',
     email:'',
     subject:'',
     message:'',
-    extras:[]
+    extras:[],
+    gender:'alien'
   });
+  const checkForm=(e)=>{
+    e.preventDefault();
+    errors.splice(0);
+
+    if(!formData.name){
+      errors.push('sorry.the name is require')
+    }
+    if(!formData.email){
+      errors.push('sorry.the email is require')
+    }
+
+    if(!errors.length){
+      submitForm();
+    }
+  }
 
   const submitForm = () => {
     console.log(JSON.stringify(formData))
