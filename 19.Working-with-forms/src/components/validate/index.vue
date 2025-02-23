@@ -6,10 +6,23 @@
         name="name" 
         placeholder="Enter your name"
         class="form-control"/>
-        <ErrorMessage name="name" as="div" v-slot="{message}">
-            <div class="alert alert-danger" role="alert">
-              {{ message }}
-            </div>
+        <ErrorMessage name="name" v-slot="{ message }">
+          <div v-if="message" class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
+        </ErrorMessage>
+    </div>
+
+    <div class="mb-3">
+        <label for="email">Email</label>
+        <Field 
+        name="email" 
+        placeholder="Enter your email"
+        class="form-control"/>
+        <ErrorMessage name="email" v-slot="{ message }">
+          <div v-if="message" class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
         </ErrorMessage>
     </div>
 
@@ -19,6 +32,7 @@
   </Form>
 </template>
 
+
 <script setup>
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
@@ -26,7 +40,10 @@ import * as yup from 'yup';
 const formSchema = yup.object({
   name: yup.string()
     .required('The name is required')
-    .max(5, 'Sorry, a maximum of 5 characters')
+    .min(5, 'Sorry, a minimum of 5 characters is required'),
+  email: yup.string()
+    .required('The email is required')
+    .email('Please enter a valid email address')
 });
 
 function handleSubmit(values, { resetForm }) {
