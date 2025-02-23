@@ -131,10 +131,10 @@
     errors.splice(0);
 
     if(!formData.name){
-      errors.push('sorry.the name is require')
+      errors.push('sorry,the name is require')
     }
     if(!formData.email){
-      errors.push('sorry.the email is require')
+      errors.push('sorry,the email is require')
     }
 
     if(!errors.length){
