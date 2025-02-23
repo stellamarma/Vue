@@ -1,14 +1,13 @@
 <template>
-  <Form @submit="onSubmit">
+  <Form @submit="handleSubmit" :validation-schema="formSchema">
     <div class="mb-3">
         <label for="name">Name</label>
         <Field 
         name="name" 
-        :rules="[isRequired,ValidateName]" 
         placeholder="Enter your name"
         class="form-control"/>
         <ErrorMessage name="name" as="div" v-slot="{message}">
-            <div class="alert alert-danger" role ="alert">
+            <div class="alert alert-danger" role="alert">
               {{ message }}
             </div>
         </ErrorMessage>
@@ -21,18 +20,16 @@
 </template>
 
 <script setup>
-import {Field,Form,ErrorMessage} from 'vee-validate';
+import { Field, Form, ErrorMessage } from 'vee-validate';
+import * as yup from 'yup';
 
-const isRequired =(value)=> {
-  if(!value){return 'This field is required'}
-  return true
-}
-const ValidateName=(value)=>{
-  if(value!=='steve'){return true}
-  return 'You are not allow steve'
-}
+const formSchema = yup.object({
+  name: yup.string()
+    .required('The name is required')
+    .max(5, 'Sorry, a maximum of 5 characters')
+});
 
-function handleSubmit(values,{resetForm}){
+function handleSubmit(values, { resetForm }) {
   console.log(values);
   resetForm();
 }
