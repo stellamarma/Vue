@@ -34,6 +34,18 @@
     >
         Toggle display 3
     </button>
+    <hr/>
+    <transition name="slideup">
+        <div class="p-3 mb-2 bg-success text-white" v-if="data.display4"
+        >
+            Hello
+        </div>
+    </transition>
+    <button class="btn btn-primary" 
+        @click="data.display4 = !data.display4"
+    >
+        Toggle display 4
+    </button>
 </template>
 
 <script setup>
@@ -42,7 +54,8 @@
    const data = reactive({
         display:false,
         display2:true,
-        display3:true
+        display3:true,
+        display4:true
    })
 </script>
 
@@ -84,5 +97,29 @@
         opacity: 0;
     }
 
-
+    /* for slideup side */
+    .slideup-enter-from{
+        animation:slideUp .5s ease-in-out;
+    }    
+    .slideup-leave-from {
+        animation:slideDown .5s ease-in-out;
+    }
+    @keyframes slideUp{
+        from {
+            opacity: 0;
+            transform: translateY(10p);
+        }to{
+            opacity: 0;
+            transform: translateY(0p);
+        }
+    }
+    @keyframes slideDown{
+        from {
+            opacity: 0;
+            transform: translateY(0p);
+        }to{
+            opacity: 0;
+            transform: translateY(10p);
+        }
+    }
 </style>
