@@ -1,6 +1,6 @@
 <template>
     <transition>
-        <div class="p-3 mb-2 bg-success text-white" v-if="data.display"
+        <div class="p-3 mb-2 bg-success text-white" v-show="data.display"
         >
             Hello
         </div>
