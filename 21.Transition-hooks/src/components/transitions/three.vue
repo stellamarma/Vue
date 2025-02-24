@@ -8,7 +8,7 @@
     <hr>
     <div>
         <ul class="list-group pl-0">
-         <transition-group name="fade">
+         <transition-group name="fade" appear>
             <li class ="list-group-item"
             v-for="(item,index) in data.list"
              @click="removeItem(index)"
