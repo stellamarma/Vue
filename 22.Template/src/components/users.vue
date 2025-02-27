@@ -1,5 +1,10 @@
 <template>
     <div class="row">
+
+        <div v-if="data.loading">
+            <app-loader />
+        </div>
+
         <div class="col-auto mb-4" 
             v-for="(user) in data.users"
             :key="user.id"
@@ -30,6 +35,7 @@ import axios from 'axios';
 import {onMounted,reactive} from 'vue';
 
 const data= reactive({
+    loading:true,
     users:[]
 })
 
@@ -38,6 +44,7 @@ const loadUsers=()=>{
     axios.get(`http://localhost:3006/users`)
     .then(response=>{
         data.users=response.data;
+        data.loading=false;
     })
     .catch(error=>{
         console.log(error)
