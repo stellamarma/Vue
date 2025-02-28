@@ -33,7 +33,9 @@
 <script setup>
 import axios from 'axios';
 import {onMounted,reactive} from 'vue';
+import {useToast} from 'vue-toast-notification';
 
+const $toast = useToast();
 const data= reactive({
     loading:true,
     users:[]
@@ -47,7 +49,7 @@ const loadUsers=()=>{
         data.loading=false;
     })
     .catch(error=>{
-        console.log(error)
+        $toast.error('Sorry something went wrong')
     })
 }
 
