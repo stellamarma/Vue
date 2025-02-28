@@ -1,7 +1,10 @@
 
 <template>
     <h2>Add users</h2>
-    <div>
+    <div v-show="loading">
+        <app-loader />
+    </div>
+    <div v-show="!loading">
         <div class="form-group mb-3">
             <label>Name</label>
             <input class="form-control" type="text" v-model="user.name">
@@ -20,15 +23,34 @@
 </template>
 
 <script setup>
-    import { reactive } from 'vue';
-
+    import { reactive,ref } from 'vue';
+    import axios from 'axios';
+    import {useToast} from 'vue-toast-notification';
+    
+    const $toast = useToast();
+    const loading=ref(false);
     const user = reactive({
         name:'',
         lastname:''
     });
 
     const submitForm = () => {
-        console.log(user);
+        loading.value=true;
+
+        axios({
+            method:'POST',
+            url:`http://localhost:3006/users`,
+            data:user
+        })
+        .then(()=>{
+            $toast.success('You have new user!')
+        })
+        .catch(error=>{
+            $toast.error('Sorry try again')
+        })
+        .fanally(()=>{
+            loading.value=false;
+        })
     }
 
 
