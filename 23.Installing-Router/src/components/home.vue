@@ -8,7 +8,12 @@
           illo inventore veritatis et quasi architecto beatae vitae dicta sunt
           explicabo.
         </p>
-        <button class="btn btn-primary btn-lg" type="button">Read more</button>
+        <button
+          class="btn btn-primary btn-lg" 
+          type="button"
+          @click="router.push('/articles')">
+            Read more
+        </button>
       </div>
     </div>
   
@@ -40,3 +45,14 @@
       </div>
     </div>
   </template>
+  <script setup>
+    import {useRouter,useRoute} from 'vue-router';
+
+    const router = useRouter();
+    const route = useRoute();
+
+    console.log(router);//gives methods
+    console.log(route);//gives info abou the route
+
+
+  </script>
