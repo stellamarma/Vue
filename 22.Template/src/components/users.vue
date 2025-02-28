@@ -31,30 +31,9 @@
 </template>
 
 <script setup>
-import axios from 'axios';
-import {onMounted,reactive} from 'vue';
-import {useToast} from 'vue-toast-notification';
+    import getUsers from '@/composables/getUsers';
+    const {data,loadUsers}=getUsers();
 
-const $toast = useToast();
-const data= reactive({
-    loading:true,
-    users:[]
-})
-
-const loadUsers=()=>{
-
-    axios.get(`http://localhost:3006/users`)
-    .then(response=>{
-        data.users=response.data;
-        data.loading=false;
-    })
-    .catch(error=>{
-        $toast.error('Sorry something went wrong')
-    })
-}
-
-onMounted(()=>{
     loadUsers();
-})
 
 </script>
