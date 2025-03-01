@@ -60,10 +60,14 @@
     </div>
   </template>
 <script setup>
-
+  import axios from 'axios';
+  import {onMounted,ref} from 'vue';
   import {useRoute} from 'vue-router';
 
   const route = useRouter();
+  const article=ref({})
+
+
   console.log(route.params);
 
 
