@@ -4,12 +4,13 @@
         <!--  ITEM -->
         <div class="col" v-for="(article,index) in data.articles" :key="article.id">
             <div class="card shadow-sm">
-                <img class="bd-placeholder-img card-img-top" :src="article.img + '?' + index "/>
+                <img class="bd-placeholder-img card-img-top" :src="article.img + '?' + index"/>
                 <div class="card-body">
-                    <p>{{article.excerpt}}</p>
+                    <p>{{ article.excerpt }}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <router-link :to ="'/atricles/'+ article.id">
+
+                            <router-link :to="'/articles/'+ article.id">
                                 <button type="button" class="btn btn-sm btn-outline-secondary">
                                     View
                                 </button>
@@ -20,21 +21,25 @@
             </div>
         </div>
     
+
+    
     </div>
     </template>
-    <script setup>
-    import axios from 'axios';
-    import {onMounted,reactive} from 'vue';
 
-    const data = reactive ({
+<script setup>
+    import axios from 'axios'
+    import { onMounted,reactive } from 'vue';
+
+    const data = reactive({
         articles:[]
-    })
+    });
 
     onMounted(()=>{
         axios.get('http://localhost:3005/articles')
         .then(response=>{
-            data.articles=response.data
+            data.articles = response.data
         })
     })
 
-    </script>
+
+</script>

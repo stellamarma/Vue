@@ -1,5 +1,10 @@
 <template>
-    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+
+  <router-link to="/articles/3">Go to a different article</router-link>
+
+  <div v-if="Object.keys(article).length !== 0">
+
+    <!-- <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
       <div class="col-md-6 px-0">
         <h1 class="display-4 fst-italic">
           Incididunt ut labore et dolore magna aliqua
@@ -10,38 +15,19 @@
           veniam, quis nostrud exercitation
         </p>
       </div>
-    </div>
+    </div> -->
   
     <div class="row g-5">
       <div class="col-md-8">
-        <h3 class="pb-4 mb-4 fst-italic border-bottom">Dolore magnam aliquam</h3>
+        <h3 class="pb-4 mb-4 fst-italic border-bottom">
+          {{ article.title}}
+        </h3>
   
         <article class="blog-post">
           <p class="blog-post-meta">
-            December 14, 2020 by <strong>Chris</strong>
+            {{ article.date  }} by <strong>{{ article.author }}</strong>
           </p>
-  
-          <p>
-            Consectetur, adipisci velit, sed quia non numquam eius modi tempora
-            incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-            enim ad minima veniam, quis nostrum exercitationem ullam corporis
-            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis
-            autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
-            nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-            voluptas nulla pariatur?
-          </p>
-          <ul>
-            <li>Nam libero tempore, cum soluta nobis</li>
-            <li>Sed ut perspiciatis unde omnis iste natus</li>
-            <li>Nores eos qui ratione voluptatem sequi ne</li>
-          </ul>
-          <p>
-            I et accusamus et iusto odio dignissimos ducimus qui blanditiis
-            praesentium voluptatum deleniti atque corrupti quos dolores et quas
-            molestias excepturi sint occaecati cupiditate non provident, similique
-            sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-            dolorum fuga. Et harum quid.
-          </p>
+          <div v-html="article.content"></div>
         </article>
       </div>
   
@@ -58,19 +44,32 @@
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
+
 <script setup>
-  import axios from 'axios';
-  import {onMounted,ref} from 'vue';
-  import {useRoute} from 'vue-router';
+    import axios from 'axios'
+    import { onMounted,ref, watch } from 'vue';
+    import { useRoute } from 'vue-router';
 
-  const route = useRouter();
-  const article=ref({})
+    const route = useRoute();
+    const article = ref({});
 
+    const loadArticleData = (articleID) => {
+      axios.get(`http://localhost:3004/articles/${articleID}`)
+      .then(response=>{
+        article.value = response.data
+      })
+    }
 
-  console.log(route.params);
+    onMounted(()=>{
+      loadArticleData(route.params.articleID)
+    })
 
-
-
-
+    watch(
+      () => route.params.articleID,
+      async newId => {
+        loadArticleData(newId)
+      }
+    )
 </script>
