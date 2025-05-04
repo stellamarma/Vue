@@ -35,7 +35,7 @@
     });
 
     onMounted(()=>{
-        axios.get('http://localhost:3005/articles')
+        axios.get('http://localhost:3004/articles')
         .then(response=>{
             data.articles = response.data
         })
