@@ -52,6 +52,9 @@
     import { onMounted,ref, watch } from 'vue';
     import { useRoute } from 'vue-router';
 
+    const props= defineProps(['articleID']);
+    console.log(props.articleID);
+
     const route = useRoute();
     const article = ref({});
 
