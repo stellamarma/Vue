@@ -9,9 +9,9 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes:[
         {path:'/',component:Home},
-        {path:'/articles',component:Articles},
+        {path:'/articles',component:Articles, children:[]},
         {path:'/articles/:articleID',component:Article, props:true},
-        {path:'/contact',component:Contact},
+        {path:'/contact',component:Contact,name:'contact'},
         {path:'/:notFound(.*)',component:NotFound}
     ],
     linkActiveClass:'active'
