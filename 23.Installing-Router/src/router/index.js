@@ -4,6 +4,7 @@ import Contact from '@/components/contact/index.vue'
 import Home from '@/components/home.vue'
 import Article from '@/components/articles/article.vue';
 import NotFound from '@/components/404.vue'
+import Notify from '@/components/notify.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,7 +12,7 @@ const router = createRouter({
         {path:'/',component:Home},
         {path:'/articles',component:Articles, children:[]},
         {path:'/articles/:articleID',component:Article, props:true},
-        {path:'/contact',component:Contact,name:'contact'},
+        {path:'/contact',components:{default:Contact,notify:Notify},name:'contact'},
         {path:'/:notFound(.*)',component:NotFound}
     ],
     linkActiveClass:'active'

@@ -6,6 +6,7 @@
           <!-- <articles-main></articles-main> -->
           <!-- <article-comp></article-comp> -->
           <!-- <contact-component></contact-component> -->
+           <router-view name="notify" />
         </div>
 </template>
 
