@@ -52,14 +52,14 @@
     import { onMounted,ref, watch } from 'vue';
     import { useRoute } from 'vue-router';
 
-    const props= defineProps(['articleID']);
-    console.log(props.articleID);
+    const props = defineProps(['crazy']);
+    console.log(props.crazy)
 
     const route = useRoute();
     const article = ref({});
 
     const loadArticleData = (articleID) => {
-      axios.get(`http://localhost:3004/articles/${articleID}`)
+      axios.get(`http://localhost:3005/articles/${articleID}`)
       .then(response=>{
         article.value = response.data
       })

@@ -7,7 +7,7 @@
           to="/"
           class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
         >
-          <span class="fs-4">Beardit.com</span>
+          <span class="fs-4">Get job</span>
         </router-link>
   
         <ul class="nav nav-pills">
