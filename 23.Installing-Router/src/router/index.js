@@ -13,18 +13,24 @@ const propsBack = (route) => {
         crazy: route.path + ' some other route'
     }
 }
-const checkAuth=()=>{
-    const isAuth = false;
+const checkAuth = () =>{
+    const isAuth = true;//if it is false, we will not get the atricles
 
     if(!isAuth) return '/login';
 }
+const checkAdmin = () =>{
+    const isAdmin =true;
 
+    if(!isAdmin) return '/';
+
+
+}
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes:[
         {path:'/',component:Home},
         {path:'/articles',component:Articles,
-            beforeEnter: checkAuth
+            beforeEnter: [checkAuth,checkAdmin]
         },
         {path:'/articles/:articleID',component:Article, props:propsBack},
         {path:'/contact',components:{

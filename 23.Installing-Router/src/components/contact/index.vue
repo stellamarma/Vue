@@ -116,5 +116,31 @@
         <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
       </form>
     </div>
-  </template>
+</template>
+<script>
+import {onBeforeRouteLeave  } from 'vue-router'
+
+
+export default{
+  setup(){
+    onBeforeRouteLeave((to,from )=>{
+      const answer= window.confirm('Do you really want out?');
+
+      if(answer)
+        return true;
+      else
+        return false;
+
+
+    }) 
+  },
+  beforeRouteEnter(){
+    const isAuth =true;
+    if(!isAuth) return '/login';
+  }
+}
+
+
+
+</script>
   
