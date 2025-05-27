@@ -13,8 +13,8 @@
         </div>
         <br /> -->
   
-        <button type="button" class="btn btn-primary me-3" @click="substract">+</button>
-        <button type="button" class="btn btn-outline-secondary" @click="add">-</button>
+        <button type="button" class="btn btn-primary me-3" @click="store.add">+</button>
+        <button type="button" class="btn btn-outline-secondary" @click="store.subtract">-</button>
       </div>
     </div>
   </template>
@@ -27,11 +27,11 @@
 
     const count =computed(()=>store.getCount)
 
-    const add = () =>{
-      store.counter++
-    }
-    const substract = () =>{
-      store.counter--
-    }
+    // const add = () =>{
+    //   store.counter++
+    // }
+    // const substract = () =>{
+    //   store.counter--
+    // }
 
   </script>

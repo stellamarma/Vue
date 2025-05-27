@@ -32,6 +32,14 @@ export const useCounterStore= defineStore('counter',{
             }
             return prize;
         }
+    },
+    actions:{
+        add(){
+            this.counter++
+        },
+        subtract(){
+            this.counter--
+        }
     }
 
 })
