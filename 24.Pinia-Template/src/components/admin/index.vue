@@ -22,15 +22,16 @@
   <script setup>
     import { computed } from 'vue'
     import { useCounterStore } from '@/store/counter';
+    
     const store= useCounterStore();
 
-  const count =computed(()=>store.getCount)
+    const count =computed(()=>store.getCount)
 
-  const add = () =>{
-    store.counter++
-  }
-  const substract = () =>{
-    store.counter--
-  }
+    const add = () =>{
+      store.counter++
+    }
+    const substract = () =>{
+      store.counter--
+    }
 
   </script>
