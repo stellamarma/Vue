@@ -10,7 +10,3 @@ Each project focuses on different aspects of Vue, helping me understand its core
 - Vue Router (navigation)  
 - State management (Vuex / Pinia)  
 - API requests & async data  
-\
-
-
-
